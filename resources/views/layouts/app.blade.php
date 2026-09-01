@@ -12,9 +12,10 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
 <body>
-    <div class="d-flex">
-        <!-- Sidebar Modern -->
-        <div class="sidebar p-3">
+    <div class="d-flex align-items-start">
+        
+        <!-- Sidebar Modern (Dibuat Sticky dan Tinggi 100vh) -->
+        <div class="sidebar p-3 d-flex flex-column justify-content-between sticky-top vh-100" style="overflow-y: auto; overflow-x: hidden;">
             <div>
                 <!-- Brand / Logo -->
                 <div class="d-flex align-items-center justify-content-between mb-4 px-2 pt-2">
@@ -45,7 +46,7 @@
             </div>
 
             <!-- Bagian Bawah Sidebar (Info Akses Staff) -->
-            <div>
+            <div class="mt-4">
                 <div class="p-3 rounded-3 mb-3" style="background-color: #181b22; border: 1px solid #1f242d;">
                     <div class="text-white fw-bold small mb-1"><i class="bi bi-shield-lock text-warning me-1"></i> Area Staff</div>
                     <p class="text-muted" style="font-size: 0.8rem;">Kelola data desa melalui Panel Admin khusus staff.</p>
@@ -58,9 +59,10 @@
         </div>
 
         <!-- Area Konten Utama -->
-        <div class="flex-grow-1 p-4" style="background-color: #0d0f12; min-height: 100vh;">
+        <div class="flex-grow-1 p-4 w-100" style="background-color: #0d0f12; min-height: 100vh;">
             @yield('content')
         </div>
+        
     </div>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

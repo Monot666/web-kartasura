@@ -37,7 +37,9 @@ class PublicFacilityResource extends Resource
                 FileUpload::make('photo_path')
                     ->label('Foto Fasilitas')
                     ->image()
-                    ->directory('facilities'),
+                    ->disk('public')
+                    ->directory('facilities')
+                    ->visibility('public'),
                 TextInput::make('google_maps_link')
                     ->label('Link Google Maps (URL)')
                     ->url()
@@ -53,7 +55,9 @@ class PublicFacilityResource extends Resource
     {
         return $table
             ->columns([
-                ImageColumn::make('photo_path')->label('Foto'),
+                ImageColumn::make('photo_path')
+                    ->label('Foto')
+                    ->disk('public'),
                 TextColumn::make('name')->label('Nama Fasilitas'),
                 TextColumn::make('google_maps_link')->label('Link Maps')->limit(30),
             ]);
