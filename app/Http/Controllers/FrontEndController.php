@@ -21,12 +21,30 @@ class FrontEndController extends Controller
     {
         $query = PopulationStatistic::query();
 
+        // Variabel baru untuk menampung data profil RT/RW
+        $selected_wilayah = null;
+        $all_wilayah = collect();
+
         // Logika untuk filter RT dan RW dari dropdown
         if ($request->filled('rt_rw')) {
             $parts = explode('-', $request->rt_rw);
             if (count($parts) == 2) {
                 $query->where('rt', $parts[0])->where('rw', $parts[1]);
+                
+                // Ambil data detail wilayah tersebut (diambil dari data yang paling baru diupdate)
+                $selected_wilayah = PopulationStatistic::where('rt', $parts[0])
+                                      ->where('rw', $parts[1])
+                                      ->latest('updated_at')
+                                      ->first();
             }
+        } 
+        // Logika jika filter kosong (tampilkan semua wilayah)
+        else {
+            $all_wilayah = PopulationStatistic::latest('updated_at')
+                            ->get()
+                            ->unique(function ($item) {
+                                return $item->rt . '-' . $item->rw;
+                            })->sortBy(['rw', 'rt']);
         }
 
         // Kalkulasi total berdasarkan filter (atau total keseluruhan jika tidak difilter)
@@ -41,7 +59,8 @@ class FrontEndController extends Controller
             ->orderBy('rt')
             ->get();
 
-        return view('penduduk', compact('total_penduduk', 'total_male', 'total_female', 'rtrw_list'));
+        // Menambahkan selected_wilayah dan all_wilayah ke compact()
+        return view('penduduk', compact('total_penduduk', 'total_male', 'total_female', 'rtrw_list', 'selected_wilayah', 'all_wilayah'));
     }
 
     public function kelahiran(\Illuminate\Http\Request $request)

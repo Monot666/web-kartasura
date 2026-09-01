@@ -5,6 +5,7 @@ namespace App\Filament\Resources\PopulationStatistics\Schemas;
 use Filament\Schemas\Schema;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\FileUpload;
 
 class PopulationStatisticForm
 {
@@ -62,6 +63,29 @@ class PopulationStatisticForm
                 TextInput::make('female_count')->label('Jumlah Perempuan')->numeric()->default(0),
                 TextInput::make('birth_count')->label('Jumlah Kelahiran')->numeric()->default(0),
                 TextInput::make('death_count')->label('Jumlah Kematian')->numeric()->default(0),
+
+                // Kolom tambahan untuk Data Ketua RT dan RW
+                TextInput::make('rt_name')
+                    ->label('Nama Ketua RT (Opsional)')
+                    ->maxLength(255),
+                    
+                FileUpload::make('rt_photo_path')
+                    ->label('Foto Ketua RT (Opsional)')
+                    ->image()
+                    ->disk('public')
+                    ->directory('rtrw')
+                    ->visibility('public'),
+
+                TextInput::make('rw_name')
+                    ->label('Nama Ketua RW (Opsional)')
+                    ->maxLength(255),
+                    
+                FileUpload::make('rw_photo_path')
+                    ->label('Foto Ketua RW (Opsional)')
+                    ->image()
+                    ->disk('public')
+                    ->directory('rtrw')
+                    ->visibility('public'),
             ]);
     }
 }
