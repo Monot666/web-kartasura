@@ -1,13 +1,13 @@
 body {
-    background-color: #0d0f12;
-    color: #a1a1aa;
+    background-color: #000000; /* Latar belakang hitam pekat */
+    color: #ffffff;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Navbar Persegi Mode Gelap */
+/* Navbar Persegi Gelap */
 .navbar-custom {
-    background-color: #121418;
-    border-bottom: 1px solid #1f242d;
+    background-color: #000000;
+    border-bottom: 1px solid #333333;
     padding: 0.8rem 0;
 }
 
@@ -18,53 +18,42 @@ body {
 }
 
 .navbar-custom .nav-link {
-    color: #9ca3af; /* Teks menu warna abu-abu */
-    font-weight: 600;
+    color: #ffffff; /* Teks menu warna putih */
+    font-weight: 500;
     padding: 8px 16px;
     margin: 0 5px;
     transition: all 0.3s ease;
-    position: relative;
+    font-size: 0.95rem;
 }
 
 .navbar-custom .nav-link:hover {
-    color: #ffffff; /* Teks menjadi putih saat disorot */
+    color: #00ff33; /* Berubah hijau saat disorot */
 }
 
-/* Efek Garis Bawah Ungu untuk Menu Aktif */
+/* Efek Teks Hijau untuk Menu Aktif (Sesuai Foto, tanpa garis bawah) */
 .navbar-custom .nav-link.active {
-    color: #ffffff;
-}
-
-.navbar-custom .nav-link.active::after {
-    content: '';
-    position: absolute;
-    bottom: -4px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60%;
-    height: 3px;
-    background-color: #6366f1;
-    border-radius: 5px;
-}
-
-/* Tombol Login Staff */
-.btn-login-staff {
-    background-color: #6366f1;
-    color: #ffffff;
+    color: #00ff33 !important;
     font-weight: 600;
-    border-radius: 8px; /* Diubah menjadi agak kotak agar serasi dengan navbar persegi */
-    padding: 8px 24px;
+}
+
+/* Tombol Login Staff Hijau Neon */
+.btn-login-staff {
+    background-color: #00ff33;
+    color: #000000;
+    font-weight: 600;
+    border-radius: 6px; 
+    padding: 6px 16px;
     border: none;
     transition: all 0.3s ease;
+    font-size: 0.9rem;
 }
 
 .btn-login-staff:hover {
-    background-color: #4f46e5;
-    color: #ffffff;
-    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+    background-color: #00cc29;
+    color: #000000;
 }
 
-/* Kartu Kotak Modern */
+/* Kartu Kotak Modern (Dipertahankan untuk halaman Total Penduduk/Fasilitas) */
 .card-modern {
     background-color: #121418;
     border: 1px solid #1f242d;
@@ -72,93 +61,82 @@ body {
     border-radius: 12px;
 }
 
-/* Kustomisasi khusus halaman Dashboard */
+/* =========================================
+   KUSTOMISASI KHUSUS HALAMAN DASHBOARD
+   ========================================= */
+
+/* Memaksa background memenuhi sisa layar di bawah navbar */
 .hero-section {
     position: relative;
     background-image: url('../images/bg-kartasura.jpg');
     background-size: cover;
     background-position: center;
-    min-height: 85vh;
-    border-radius: 16px;
-    overflow: hidden;
+    height: calc(100vh - 75px); /* Tinggi layar penuh dikurangi tinggi navbar */
+    width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: center; /* Membuat teks berada di tengah vertikal */
 }
 
+/* Efek gelap transparan agar teks mudah dibaca */
 .hero-overlay {
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
-    background: linear-gradient(90deg, rgba(13,15,18,0.95) 0%, rgba(13,15,18,0.7) 50%, rgba(13,15,18,0.1) 100%);
+    background: linear-gradient(90deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.6) 40%, rgba(0,0,0,0.1) 100%);
     z-index: 1;
 }
 
 .hero-content {
     position: relative;
     z-index: 2;
-    padding: 4rem;
+    padding: 0 4rem;
 }
 
 .hero-title {
     font-family: 'Georgia', serif;
-    font-size: 4.5rem;
+    font-size: 4rem;
     font-weight: 700;
-    color: #ffffff;
+    color: #00ff33; /* Warna Hijau Neon Sesuai Foto */
     line-height: 1.1;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
 }
 
 .hero-subtitle {
     font-size: 1.1rem;
-    color: #a1a1aa;
-    max-width: 600px;
-    line-height: 1.7;
-    margin-bottom: 4rem;
-}
-
-/* Pembungkus 3 Kolom di Bawah */
-.hero-features {
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    padding-top: 2rem;
-}
-
-.feature-item {
-    padding: 0 2rem;
-    border-left: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.feature-item:first-child {
-    border-left: none;
-    padding-left: 0;
-}
-
-.feature-icon {
-    color: #6366f1;
-    font-size: 2rem;
-}
-
-.feature-title {
-    color: #6366f1; 
-    font-weight: 600;
-    font-size: 1.1rem;
-    margin-bottom: 0.25rem;
-}
-
-.feature-desc {
-    color: #9ca3af;
-    font-size: 0.85rem;
+    color: #ffffff;
+    max-width: 650px;
     line-height: 1.6;
 }
 
 /* Penyesuaian untuk layar HP */
 @media (max-width: 768px) {
     .hero-title { font-size: 2.5rem; }
-    .hero-content { padding: 2rem; }
-    .feature-item { 
-        border-left: none; 
-        border-top: 1px solid rgba(255, 255, 255, 0.1); 
-        padding: 1.5rem 0; 
+    .hero-content { padding: 0 2rem; }
+}
+
+/* =========================================
+   KUSTOMISASI RESPONSIVE (LAYAR HP)
+   ========================================= */
+@media (max-width: 991px) {
+    /* Membuat kotak menu dropdown di HP menjadi gelap */
+    .navbar-collapse {
+        background-color: #121418;
+        padding: 1rem;
+        border-radius: 12px;
+        margin-top: 15px;
+        border: 1px solid #1f242d;
     }
-    .feature-item:first-child { border-top: none; }
-    .hero-features { flex-direction: column; }
+    
+    /* Memberi garis pemisah antar menu di HP */
+    .navbar-custom .nav-link {
+        border-bottom: 1px solid #1f242d;
+        padding: 12px 10px;
+    }
+    
+    /* Tombol login menjadi lebar penuh di HP */
+    .btn-login-staff {
+        width: 100%;
+        justify-content: center;
+        margin-top: 10px;
+    }
 }

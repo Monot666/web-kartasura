@@ -18,6 +18,9 @@ class VillageProfileResource extends Resource
 {
     protected static ?string $model = VillageProfile::class;
 
+    // Menyembunyikan menu ini dari sidebar admin
+    protected static bool $shouldRegisterNavigation = false;
+
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
     protected static ?string $navigationLabel = 'Profil Kelurahan';
